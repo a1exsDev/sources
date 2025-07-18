@@ -1,0 +1,19 @@
+{
+    "sourceName": "AnimePahe",
+    "iconUrl": "https://animepahe.ru/favicon-96x96.png",
+    "author": {
+        "name": "Alex",
+        "icon": "https://avatars.githubusercontent.com/u/117765022?v=4"
+    },
+    "version": "1.0.0",
+    "language": "English (DUB)",
+    "streamType": "HLS",
+    "quality": "1080p",
+    "baseUrl": "https://animepahe.ru/",
+    "searchBaseUrl": "https://animepahe.ru/api?m=search&l=8&q=%s",
+    "scriptUrl": "INSERTGITHUBURL",
+    "asyncJS": true,
+    "streamAsyncJS": false,
+    "softsub": true,
+    "type": "anime"
+}
