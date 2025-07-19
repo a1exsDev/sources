@@ -2,7 +2,7 @@ const baseURL = 'https://animepahe.ru';
 
 async function searchResults(keyword) {
     try {
-        const responseText = await fetch(`${baseURL}/api?m=search&l=8&q=${encodeURIComponent(keyword)}`);
+        const responseText = JSON.stringify(await fetch(`${baseURL}/api?m=search&l=8&q=${encodeURIComponent(keyword)}`));
         const data = JSON.parse(responseText);
         console.log(data)
 
