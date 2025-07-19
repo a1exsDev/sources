@@ -16,7 +16,7 @@ async function searchResults(keyword) {
         return JSON.stringify(transformedResults);
         
     } catch (error) {
-        webkit.messageHandlers.openWebView.postMessage({ url: `${baseURL}/api?m=search&l=8&q=${encodeURIComponent(keyword)}` })
+        console.log(document.cookie)
         console.log('Fetch error:', error);
         return JSON.stringify([{ title: 'Error', image: '', href: '' }]);
     }
