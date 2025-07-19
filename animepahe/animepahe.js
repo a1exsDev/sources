@@ -1,8 +1,9 @@
 const baseURL = 'https://animepahe.ru';
+const headers = {'cookie': '__ddg1_=;__ddg2_=;'};
 
 async function searchResults(keyword) {
     try {
-        const responseText = JSON.stringify(await fetch(`${baseURL}/api?m=search&l=8&q=${encodeURIComponent(keyword)}`));
+        const responseText = JSON.stringify(await fetch(`${baseURL}/api?m=search&l=8&q=${encodeURIComponent(keyword)}`, {headers: headers}));
         const data = JSON.parse(responseText);
         console.log(data)
 
@@ -16,7 +17,6 @@ async function searchResults(keyword) {
         return JSON.stringify(transformedResults);
         
     } catch (error) {
-        console.log(document.cookie)
         console.log('Fetch error:', error);
         return JSON.stringify([{ title: 'Error', image: '', href: '' }]);
     }
@@ -29,7 +29,7 @@ async function extractDetails(url) {
         // gets duration, airdate, and description
         if (url.match(/https:\/\/animepahe\.ru\/(.+)$/) != null) {
             const parser = new DOMParser()
-            const response = await fetch(`${url}`);
+            const response = await fetchv2(`${url}`, {headers: headers});
             const html = await response.text();
             const formattedhtml = parser.parseFromString(html, 'text/html')
             let animeStatus = null
@@ -86,7 +86,7 @@ async function extractEpisodes(url) {
         // example: https://animepahe.ru/showID, returns all of the episodes 'https://animepahe.ru/showID/episodeID'
         const match = url.match(/https:\/\/animepahe\.ru\/(.+)$/);
         const encodedID = match[1];
-        const response = JSON.stringify(await fetch(`${baseUrl}/api?m=release&id=${encodedID}&sort=episode_desc&page=1`));
+        const response = JSON.stringify(await fetch(`${baseUrl}/api?m=release&id=${encodedID}&sort=episode_desc&page=1`, {headers:headers}));
         const data = JSON.parse(response);
 
         const transformedResults = data.data.map(episode => ({
@@ -104,7 +104,7 @@ async function extractEpisodes(url) {
 async function extractStreamUrl(url) {
     try {
         if (url.match(/https:\/\/animepahe\.ru\/(.+)$/) != null) {
-            const response = await fetch(`${url}`);
+            const response = await fetchv2(`${url}`, {headers:headers});
             const domParser = new DOMParser();
             const rawhtml = await response.text();
             const formattedhtml = domParser.parseFromString(rawhtml, 'text/html');

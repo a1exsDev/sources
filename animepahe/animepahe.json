@@ -5,7 +5,7 @@
         "name": "Alex",
         "icon": "https://avatars.githubusercontent.com/u/117765022?v=4"
     },
-    "version": "1.0.3",
+    "version": "1.0.4",
     "language": "English (DUB)",
     "streamType": "HLS",
     "quality": "1080p",
@@ -15,5 +15,5 @@
     "asyncJS": true,
     "streamAsyncJS": false,
     "softsub": true,
-    "type": "anime"
+    "type": "Anime"
 }
