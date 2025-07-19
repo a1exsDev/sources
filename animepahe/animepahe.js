@@ -29,7 +29,7 @@ async function extractDetails(url) {
         // gets duration, airdate, and description
         if (url.match(/https:\/\/animepahe\.ru\/(.+)$/) != null) {
             const parser = new DOMParser()
-            const response = await fetchv2(`${url}`, {headers: headers});
+            const response = await fetch(`${url}`, {headers: headers});
             const html = await response.text();
             const formattedhtml = parser.parseFromString(html, 'text/html')
             let animeStatus = null
@@ -104,7 +104,7 @@ async function extractEpisodes(url) {
 async function extractStreamUrl(url) {
     try {
         if (url.match(/https:\/\/animepahe\.ru\/(.+)$/) != null) {
-            const response = await fetchv2(`${url}`, {headers:headers});
+            const response = await fetch(`${url}`, {headers:headers});
             const domParser = new DOMParser();
             const rawhtml = await response.text();
             const formattedhtml = domParser.parseFromString(rawhtml, 'text/html');
