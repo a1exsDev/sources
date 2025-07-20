@@ -1,5 +1,5 @@
 const baseURL = 'https://animepahe.ru';
-const headers = {'cookie': '__ddg1_=;__ddg2_=;'};
+const headers = {'Cookie': '__ddg1_=;__ddg2_=;'};
 
 async function searchResults(keyword) {
     try {
